@@ -34,6 +34,7 @@ def explosion():
 def forest():
     '''Returns forest drawing'''
     return "🌲"
+    
 def wall():
     '''Returns wall drawing'''
     return "🗄"
@@ -63,7 +64,6 @@ def waterCoord():
         "x" : 9,
         "y" : 9
     }
-
 
 def forestCoord():
     '''Returns forest coordinates x and y'''
@@ -120,7 +120,7 @@ goodTank = goodTank()
 goodTankCoord = goodTankCoord()
 badTank = badTank()
 badTankCoord = badTankCoord()
-
+shoot = False
 
 def greeting():
     '''Prints greeting to the user'''
@@ -132,30 +132,61 @@ def greeting():
 
 # greeting()
 
+def control():
+    '''Handles user input (instruction for action)'''
+    print("For action, write and instruction here: up, down, right, left, shoot")
+    user_action = (input("Action: ")).lower()
+    (x, y) = goodTankCoord["x"], goodTankCoord["y"]
+    if user_action == "left":
+        if x > 0:
+            goodTankCoord["x"] = goodTankCoord["x"] - 1
+            print(goodTankCoord["x"])
+    elif user_action == "right":
+        if x < 37:
+            goodTankCoord["x"] = goodTankCoord["x"] + 1
+            print(goodTankCoord["x"])
+    elif user_action == "up":
+        if y > 0:
+            goodTankCoord["y"] = goodTankCoord["y"] - 1
+            print(goodTankCoord["y"])
+    elif user_action == "up":
+        if y < 17:
+            goodTankCoord["y"] = goodTankCoord["y"] + 1
+            print(goodTankCoord["y"])
+    elif user_action == "shoot":
+        
+    #this loops through bullet y's from goodTank. 
+    #!!!! need to incorporate this into general gameloop
+        return True
+        
+    elif user_action == "quit":
+        return False
+        
+        
+   
+control()
 
-
-    
 def gameBoard():
     '''Draws gameBord'''
     # board = []
     for y in range(0,19):
         for x in range(0,37):
             if x == goodTankCoord["x"] and y == goodTankCoord["y"]:
-                print(goodTank)
+                print(goodTank, end="")
             elif x == badTankCoord["x"] and y == badTankCoord["y"]:
-                print(badTank)
+                print(badTank, end="")
             elif x == eagleCoord["x"] and y == eagleCoord["y"]:
-                print(eagle)  
+                print(eagle, end="")  
             elif x == wallCoord["x"] and y == wallCoord["y"]:
-                print(wall)
+                print(wall, end="")
             elif x == forestCoord["x"] and y == forestCoord["y"]:
-                print(forest)
+                print(forest, end="")
             elif x == explosionCoord["x"] and y == explosionCoord["y"]:
-                print(explosion)
+                print(explosion, end="")
             elif x == bulletCoord["x"] and y == bulletCoord["y"]:
-                print(bullet)
+                print(bullet, end="")
             elif x == waterCoord["x"] and y == waterCoord["y"]:
-                print(water)
+                print(water, end="")
             # elif x == 0 or x == 36:
             #     print(" ", end="")
             elif y == 0 or y == 18:
@@ -164,6 +195,39 @@ def gameBoard():
                 print(" ", end="")
         print("")
 
-gameBoard()
-            
+# gameBoard()
+def bullet_true(shoot):
+    if shoot == True:
+        column = goodTankCoord["y"]
+        while column > 1:
+            explosionCoord["y"] = goodTankCoord["y"] - 1
+            explosionCoord["x"] = goodTankCoord["x"]
+            column -= 1
+            if column == 1:
+                return False
+        return explosionCoord["y"], explosionCoord["x"]
+
+# shoot = 
+
+def game():
+    # greeting()
+    while True:
+        gameBoard()
+        control()
+        # if bullet_true() is not False:
+        #     return bullet_true()
+        # else: 
+        #     shoot = False
+            #----------------incorporate bullet movement if bullet IS
         
+            
+                
+            
+        #somewhere here should be asked if the bullet was shot, if yes - then bullet continues to move up, if not - breaks the loop
+        os.system('clear')
+        
+
+
+
+
+game()
