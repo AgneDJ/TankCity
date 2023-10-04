@@ -18,7 +18,7 @@
 import random
 import time
 import os
-
+from termcolor import colored
 
 def water():
     '''Returns water drawing'''
@@ -127,7 +127,7 @@ def greeting():
     print("HelloWorld!")
     time.sleep(1)
     os.system('clear')
-    print("What's going on?")
+    print(colored("What's going on?", "red"))
     time.sleep(1)
 
 # greeting()
@@ -140,26 +140,32 @@ def control():
     if user_action == "left":
         if x > 0:
             goodTankCoord["x"] = goodTankCoord["x"] - 1
+            print(colored("TO THE WEST!", "green"))
             print(goodTankCoord["x"])
     elif user_action == "right":
         if x < 37:
             goodTankCoord["x"] = goodTankCoord["x"] + 1
+            print(colored("TO THE EAST!", "green"))
             print(goodTankCoord["x"])
     elif user_action == "up":
         if y > 0:
             goodTankCoord["y"] = goodTankCoord["y"] - 1
+            print(colored("TO THE SOUTH!", "green"))
             print(goodTankCoord["y"])
     elif user_action == "up":
         if y < 17:
             goodTankCoord["y"] = goodTankCoord["y"] + 1
+            print(colored("TO THE NORTH!", "green"))
             print(goodTankCoord["y"])
     elif user_action == "shoot":
+        print(colored("SHOOT!", "red"))
         
     #this loops through bullet y's from goodTank. 
     #!!!! need to incorporate this into general gameloop
         return True
         
     elif user_action == "quit":
+        print(colored("SURREND!", "white"))
         return False
         
         
