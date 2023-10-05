@@ -54,8 +54,8 @@ def badTank():
 def explosionCoord():
     '''Returns explosion coordinates x and y'''
     return {
-        "x" : 7,
-        "y" : 7
+        "x" : None,
+        "y" : None
     }
 
 def waterCoord():
@@ -72,18 +72,38 @@ def forestCoord():
         "y" : 3
     }
     
-def bulletCoord():
-    '''Returns bullet coordinates x and y'''
-    return {
-        "x" : 10,
-        "y" : 10
-    }
-def wallCoord():
-    '''Returns wall coordinates x and y'''
-    return {
+# def bulletCoord():
+#     '''Returns bullet coordinates x and y'''
+#     return {
+#         "x" : 10,
+#         "y" : 10
+#     }
+def wallCoordFirstLvl():
+    '''Returns 1lvl walls coordinates x and y'''
+    return [
+        {
         "x" : 2,
         "y" : 2
-    }
+        },
+        {
+        "x" : 2,
+        "y" : 3
+        },
+        {
+        "x" : 2,
+        "y" : 4
+        },  
+        {
+        "x" : 2,
+        "y" : 5
+        },  
+        {
+        "x" : 2,
+        "y" : 6
+        }    
+    ]
+
+
 def eagleCoord():
     '''Returns eagle coordinates x and y'''
     return {
@@ -107,19 +127,20 @@ def badTankCoord():
 forest = forest()
 wall = wall()
 eagle = eagle()
-bullet = bullet()
+# bullet = bullet()
 water = water()
 waterCoord = waterCoord()
-bulletCoord = bulletCoord()
+# bulletCoord = bulletCoord()
 explosion = explosion()
 explosionCoord = explosionCoord()
 forestCoord = forestCoord()
-wallCoord = wallCoord()
+# wallCoord = wallCoord()
 eagleCoord = eagleCoord()
 goodTank = goodTank()
 goodTankCoord = goodTankCoord()
 badTank = badTank()
 badTankCoord = badTankCoord()
+wallCoordFirstLvl = wallCoordFirstLvl()
 shoot = False
 
 def greeting():
@@ -183,14 +204,18 @@ def gameBoard():
                 print(badTank, end="")
             elif x == eagleCoord["x"] and y == eagleCoord["y"]:
                 print(eagle, end="")  
-            elif x == wallCoord["x"] and y == wallCoord["y"]:
-                print(wall, end="")
+            # elif i = 0:
+            #     for i in wallCoordFirstLvl:
+            #         if x == wallCoordFirstLvl["x"] and y == wallCoordFirstLvl["y"]:
+            #             print(wall, end="")
+            #             i+=1
+            #--------!!!! fix this part!!!!
             elif x == forestCoord["x"] and y == forestCoord["y"]:
                 print(forest, end="")
             elif x == explosionCoord["x"] and y == explosionCoord["y"]:
                 print(explosion, end="")
-            elif x == bulletCoord["x"] and y == bulletCoord["y"]:
-                print(bullet, end="")
+            # elif x == bulletCoord["x"] and y == bulletCoord["y"]:
+            #     print(bullet, end="")
             elif x == waterCoord["x"] and y == waterCoord["y"]:
                 print(water, end="")
             # elif x == 0 or x == 36:
